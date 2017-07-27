@@ -38,7 +38,7 @@ class TestVonMisesFisherMixture(object):
 
             normalized_approx_diff =\
                     np.linalg.norm(v - v_approx) / np.linalg.norm(v)
-            print normalized_approx_diff
+            print(normalized_approx_diff)
             diffs.append(normalized_approx_diff)
 
         assert diffs[0] > 10 * diffs[-1]
@@ -75,12 +75,12 @@ class TestVonMisesFisherMixture(object):
                         first_breakage = n_f
 
             breakage_points.append(first_breakage)
-            print 'Scipy vmf_log breaks for kappa={} at n_features={}'.format(
+            print('Scipy vmf_log breaks for kappa={} at n_features={}'.format(
                     kappa,
                     first_breakage
-                )
+                ))
 
-        print breakage_points
+        print(breakage_points)
         assert_array_equal(breakage_points, [141, 420, 311, 3, 3])
 
 
@@ -101,8 +101,8 @@ class TestVonMisesFisherMixture(object):
                     posterior
                 )
 
-            print 'center estimate error', np.linalg.norm(centers[0, :] - mu)
-            print 'kappa estimate', np.abs(kappa - concentrations[0]) / kappa, kappa, concentrations[0]
+            print('center estimate error', np.linalg.norm(centers[0, :] - mu))
+            print('kappa estimate', np.abs(kappa - concentrations[0]) / kappa, kappa, concentrations[0])
 
             assert_almost_equal(1., weights[0])
             assert_almost_equal(
@@ -132,7 +132,7 @@ class TestVonMisesFisherMixture(object):
         },
         {
             'posterior_type': 'hard',
-            'force_weights': np.ones(5.)/5.,
+            'force_weights': np.ones(5)/5,
         },
     ])
     def test_integration_dense(self, params_in):
@@ -189,7 +189,7 @@ class TestVonMisesFisherMixture(object):
         },
         {
             'posterior_type': 'hard',
-            'force_weights': np.ones(5.)/5.,
+            'force_weights': np.ones(5)/5,
         },
     ])
     def test_integration_sparse(self, params_in):
